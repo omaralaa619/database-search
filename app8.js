@@ -23,7 +23,7 @@ searchBar.addEventListener("keyup", (e) => {
 
 const loadCharacters = async () => {
   try {
-    const res = await fetch("https://omar-admin-system.herokuapp.com/");
+    const res = await fetch("https://omar-admin-system.herokuapp.com/api");
     hpCharacters = await res.json();
     displayCharacters(hpCharacters);
   } catch (err) {
