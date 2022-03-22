@@ -3,22 +3,42 @@ const searchBar = document.getElementById("searchBar");
 const btn = document.querySelector("#btn");
 
 const radioButtons = document.querySelectorAll(
-  'input[name="institutionTypeFilter"]'
+  'input[name="institution-type"]'
 );
 let hpCharacters = [];
-let searchQuery = [];
+let filteredCharacters = [];
+
 let selectedSize;
 
-searchBar.addEventListener("keyup", (e) => {
-  const searchString = e.target.value.toLowerCase();
+btn.addEventListener("click", () => {
+  let selectedSize;
 
-  const filteredCharacters = hpCharacters.filter((character) => {
+  for (const radioButton of radioButtons) {
+    if (radioButton.checked) {
+      selectedSize = radioButton.value;
+      break;
+    }
+  }
+  if (filteredCharacters.length === 0) {
+    console.log("empty");
+    filteredCharacters = hpCharacters;
+  }
+  result = filteredCharacters.filter((entry) => {
+    return entry.institutionType.includes(selectedSize);
+  });
+  displayCharacters(result);
+  console.log(selectedSize);
+});
+
+searchBar.addEventListener("keyup", (e) => {
+  const searchString = e.target.value;
+
+  filteredCharacters = hpCharacters.filter((character) => {
     return (
       character.institution.includes(searchString) ||
       character.institutionType.includes(searchString)
     );
   });
-  displayCharacters(filteredCharacters);
 });
 
 const loadCharacters = async () => {
@@ -48,7 +68,7 @@ const displayCharacters = (characters) => {
                 </div>
                 <div class = "list-header">
                 <p> ${character.email}<span> :البريد الإلكتروني</span></p>
-                <p> ${character.website}<span> :الموقع</span></p>
+                <p> <a  href="${character.website}" target = "_blank">${character.website}</a><span> :الموقع</span></p>
                 </div>
                 
             </li>
