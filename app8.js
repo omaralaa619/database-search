@@ -34,10 +34,7 @@ searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value;
 
   filteredCharacters = hpCharacters.filter((character) => {
-    return (
-      character.institution.includes(searchString) ||
-      character.institutionType.includes(searchString)
-    );
+    return character.institution.includes(searchString);
   });
 });
 
