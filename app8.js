@@ -65,7 +65,19 @@ const displayCharacters = (characters) => {
                 </div>
                 <div class = "list-header">
                 <p> ${character.email}<span> :البريد الإلكتروني</span></p>
-                <p> <a  href="${character.website}" target = "_blank">${character.website}</a><span> :الموقع</span></p>
+                <p> ${character.website}<span> :الموقع</span></p>
+                </div>
+                <div class = "list-header">
+                <p><span>الاهتمام بالعمل في محافظة أسوان: </span> ${character.intrestedAswan}</p>
+                <p><span>هل توجد خطة استراتيجية للتنمية: </span> ${character.stratigicPlan}</p>
+                </div>
+                
+                <p><span>نوع المشاركة والدعم: </span> ${character.supportType}</p>
+                <p><span>الاشتراطات الواجب توافرها في الجمعية طالبة المتحة: </span> ${character.demands}</p>
+                
+                <div class = "list-header">
+                <p><span>كيفية التواصل من قبل الجمعيات: </span> ${character.communicationType}</p>
+                <p><span>هل في موعد معين لتلقي الطلبات: </span> ${character.orderTime}</p>
                 </div>
                 
             </li>
